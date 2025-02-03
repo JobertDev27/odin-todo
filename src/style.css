@@ -33,61 +33,11 @@ header {
     top: 0;
 }
 
-aside {
-    
-    margin-left: 2%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#page-container {
-    display: flex;
-    margin-top: 120px;
-    gap: 50px;
-}
-
-.side-box {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: fit-content;
-    border-radius: 40px;
-    padding: 10px 10px 40px;
-    background-color: var(--header);
-    align-items: center;
-}
-
-.filter-option-container {
-    align-self: start;
-    list-style: none;
-    margin: 0 30px 0;
-    padding: 0;
-}
-
-.filter-option-container button {
-    background-color: transparent;
-    border: 0;
-    color: var(--text);
-    font-size: 18px;
-    height: 25px;
-    cursor: pointer;
-}
-
-#urgent {
-    color: red;
-}
-#important {
-    color: yellow;
-}
-#lax {
-    color: green;
-}
-#none {
-    color: gray;
-}
+/*              SIDEBAR START            */
 
 #add-task-button {
+    position: absolute;
+    left: 50px;
     width: 100px;
     padding: 10px;
     background-color: green;
@@ -101,7 +51,74 @@ aside {
 
 #add-task-button:active {
     transform: translateY(5px);
-    box-shadow: none;
+    box-shadow: 0px 5px rgb(0, 68, 0);
 }
 
+#add-menu {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0.4, 0.4);
+    position: absolute;
+    top: 0;
+    z-index: 15;
+}
+
+form {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background-color: var(--header);
+    padding: 10px 70px 30px;
+    border-radius: 40px;
+}
+
+form > input,
+form > textarea {
+    margin-bottom: 10px;
+}
+
+form button {
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: var(--text);
+    background-color: green;
+    border: 0;
+}
+
+.hidden {
+   display: none;
+}
+
+/*              END OF SIDEBAR             */
+
+/*              DOM STYLING                */
+
+main {
+    margin: 120px 20px 20px;
+     width: calc(100% - 40px);
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     height: fit-content;
+}
+
+.task-container {
+    height: 300px;
+    padding: 10px 20px;
+    margin-top: 5px;
+    background-color: var(--header);
+    
+    border: 0;
+    border-top: 20px;
+    border-style: solid;
+    border-color: green;
+    border-radius: 20px;
+}
+
+.task-title {
+    font-size: 24px;
+    margin: 10px 0 10px 0;
+}
 
