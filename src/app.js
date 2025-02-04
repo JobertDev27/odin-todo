@@ -8,10 +8,18 @@ const formHandler = () => {
 
     const formContainer = document.getElementById("add-menu");
     const addTodo = document.getElementById("add-task-button");
+    const clearBtn = document.getElementById("clear-task-button");
     const form = document.querySelector("form");
-
+    
     let tasks = [];
-    console.log(reloadStorage())
+    console.log(reloadStorage());
+
+    //  INITIALIZED DOM ELEMENTS
+    const initDom = () => {
+        tasks.forEach(task => {
+            createDom(task);
+        });
+    }
 
     // HIDE THE FORM BY CLICKING OUTSIDE
     formContainer.addEventListener("click", (e) => {
@@ -19,6 +27,12 @@ const formHandler = () => {
             hideForm();
         }
     });
+
+    // CLEAR LOCAL STORAGE
+    clearBtn.addEventListener("click", () => {
+        localStorage.clear();
+        location.reload();
+    })
 
     // SHOWS FORM BY REMOVINNG HIDDEN CLASS
     addTodo.addEventListener("click", () => formContainer.classList.remove("hidden"));
@@ -36,14 +50,17 @@ const formHandler = () => {
 
         tasks.push(data);
         createDom(tasks.at(-1));
-        console.log(tasks);
         storeStorage(tasks);
         
         hideForm();
         form.reset();
     })
 
-    
+    if (reloadStorage() !== null){
+        tasks = reloadStorage();
+        initDom();
+    }
+   
 }
 
 formHandler();
